@@ -11,4 +11,6 @@ spec:
   storageClassName: s3
   csi:
     driver: s3.csi.k8s.io
-    volumeHandle: pvpvc15
+    volumeHandle: pvpvc15  # Ensure this matches the existing S3 bucket name
+    volumeAttributes:
+      region: ap-south-1 # Specify your region if needed
