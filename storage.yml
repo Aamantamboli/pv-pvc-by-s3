@@ -1,8 +1,25 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: v1
+kind: Namespace
 metadata:
-  name: s3
-provisioner: s3.csi.aws.com
-parameters:
-  bucket: pvpvc15
-  region: ap-south-1
+  name: s3-csi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: s3-csi-driver
+  namespace: s3-csi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: s3-csi
+  template:
+    metadata:
+      labels:
+        app: s3-csi
+    spec:
+      containers:
+        - name: s3-csi-driver
+          image: k8s-sigs/s3-csi-driver:latest
+          ports:
+            - containerPort: 10000
