@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: s3-pod
+spec:
+  containers:
+    - name: app
+      image: nginx
+      volumeMounts:
+        - mountPath: "/data"
+          name: s3-storage
+  volumes:
+    - name: s3-storage
+      persistentVolumeClaim:
+        claimName: s3-pvc
