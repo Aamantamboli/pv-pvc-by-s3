@@ -11,4 +11,4 @@ spec:
   storageClassName: s3
   csi:
     driver: s3.csi.k8s.io
-    volumeHandle: my-s3-bucket-name
+    volumeHandle: pvpvc15
