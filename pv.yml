@@ -4,13 +4,11 @@ metadata:
   name: s3-pv
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: s3
+  storageClassName: s3-storage
   csi:
     driver: s3.csi.k8s.io
-    volumeHandle: pvpvc15  # Ensure this matches the existing S3 bucket name
-    volumeAttributes:
-      region: ap-south-1 # Specify your region if needed
+    volumeHandle: "mypvpvcbucket"
