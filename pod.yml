@@ -1,23 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: s3-deployment
+  name: myapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: s3-app
+      app: myapp
   template:
     metadata:
       labels:
-        app: s3-app
+        app: myapp
     spec:
       containers:
-      - name: s3-container
-        image: nginx:latest
+      - name: myapp
+        image: nginx
+        ports:
+        - containerPort: 80
         volumeMounts:
-        - name: s3-storage
-          mountPath: /usr/share/nginx/html
+        - mountPath: "/usr/share/nginx/html"
+          name: s3-storage
       volumes:
       - name: s3-storage
         persistentVolumeClaim:

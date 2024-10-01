@@ -4,11 +4,17 @@ metadata:
   name: s3-pv
 spec:
   capacity:
-    storage: 10Gi
+    storage: 5Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: s3-storage
+  storageClassName: s3
   csi:
-    driver: s3.csi.k8s.io
-    volumeHandle: "mypvpvcbucket"
+    driver: fuse.csi.k8s.com
+    volumeHandle: s3-pv
+    volumeAttributes:
+      bucket: mypvpvcbucket
+      region: ap-south-1
+    controllerExpandSecretRef:
+      name: s3-secret
+      namespace: default
