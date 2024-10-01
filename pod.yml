@@ -1,26 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: myapp
+  name: s3-pod
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: myapp
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-      - name: myapp
-        image: nginx
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - mountPath: "/usr/share/nginx/html"
+  containers:
+    - name: app-container
+      image: nginx
+      volumeMounts:
+        - mountPath: "/data"
           name: s3-storage
-      volumes:
-      - name: s3-storage
-        persistentVolumeClaim:
-          claimName: s3-pvc
+  volumes:
+    - name: s3-storage
+      persistentVolumeClaim:
+        claimName: s3-pvc

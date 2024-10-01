@@ -10,11 +10,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: s3
   csi:
-    driver: fuse.csi.k8s.com
-    volumeHandle: s3-pv
+    driver: s3.csi.aws.com
+    volumeHandle: mypvpvcbucket
     volumeAttributes:
-      bucket: mypvpvcbucket
+      bucketName: mypvpvcbucket
       region: ap-south-1
-    controllerExpandSecretRef:
-      name: s3-secret
-      namespace: default

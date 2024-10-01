@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  storageClassName: s3
   resources:
     requests:
       storage: 5Gi
-  storageClassName: s3
