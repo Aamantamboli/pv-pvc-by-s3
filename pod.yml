@@ -4,11 +4,11 @@ metadata:
   name: s3-pod
 spec:
   containers:
-    - name: app-container
+    - name: app
       image: nginx
       volumeMounts:
-        - mountPath: "/data"
-          name: s3-storage
+        - name: s3-storage
+          mountPath: /mnt/s3
   volumes:
     - name: s3-storage
       persistentVolumeClaim:

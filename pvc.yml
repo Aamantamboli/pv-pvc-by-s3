@@ -3,9 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: s3-pvc
 spec:
+  storageClassName: s3
   accessModes:
     - ReadWriteMany
-  storageClassName: s3
   resources:
     requests:
-      storage: 5Gi
+      storage: 10Gi
