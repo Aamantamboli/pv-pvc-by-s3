@@ -11,7 +11,7 @@ spec:
   storageClassName: s3
   csi:
     driver: com.amazonaws.csi.s3
-    volumeHandle: <your-bucket-name>
+    volumeHandle: mynewpvpvcbucket
     volumeAttributes:
       bucket: mynewpvpvcbucket
       region: ap-south-1
