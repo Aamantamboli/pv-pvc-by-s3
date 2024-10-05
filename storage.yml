@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: s3
+provisioner: com.amazonaws.csi.s3
+parameters:
+  csi.storage.k8s.io/provisioner-secret-name: aws-credentials
+  csi.storage.k8s.io/provisioner-secret-namespace: default
+  csi.storage.k8s.io/controller-expand-secret-name: aws-credentials
+  csi.storage.k8s.io/controller-expand-secret-namespace: default
+  csi.storage.k8s.io/node-stage-secret-name: aws-credentials
+  csi.storage.k8s.io/node-stage-secret-namespace: default
