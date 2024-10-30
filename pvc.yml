@@ -1,11 +1,15 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: Pod
 metadata:
-  name: s3-pvc
+  name: s3-test-pod
 spec:
-  storageClassName: s3
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 10Gi
+  containers:
+  - name: s3-container
+    image: nginx
+    volumeMounts:
+    - name: s3-storage
+      mountPath: "/mnt/s3"
+  volumes:
+  - name: s3-storage
+    persistentVolumeClaim:
+      claimName: s3-pvc
