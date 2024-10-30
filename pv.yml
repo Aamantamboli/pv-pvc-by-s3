@@ -8,10 +8,10 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: s3
-  csi:
-    driver: com.amazonaws.csi.s3
-    volumeHandle: mynewpvpvcbucket
-    volumeAttributes:
-      bucket: mynewpvpvcbucket
-      region: ap-south-1
+  storageClassName: manual
+  flexVolume:
+    driver: "s3fs/fuse"
+    options:
+      bucket: "swapbuck4"
+      accessKeyID: "AKIA2OAJT75QK5RYPOD3"
+      secretAccessKey: "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"
